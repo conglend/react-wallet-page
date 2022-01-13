@@ -22,8 +22,8 @@ const tabs = [
 const ExperienceDetailPage = () => {
   let { id } = useParams();
 
-  const experience = experiences.find((e) => e.id == id);
-  const category = popularCategories.find((c) => c.id == experience.categoryId);
+  const experience = experiences.find((e) => e.id === parseInt(id));
+  const category = popularCategories.find((c) => c.id === experience.categoryId);
 
   const [activeTab, setActiveTab] = useState(1);
   const [visibleOverView, setVisibleOverView] = useState(true);
