@@ -3,7 +3,10 @@ import arrowIcon from "../assets/images/svg/arrow_right.svg";
 
 const CategoryItem = ({ category }) => {
   return (
-    <div className="popular-categories-list-item" style={{ backgroundColor: `${category.color}` }}>
+    <div
+      className="popular-categories-list-item"
+      style={{ backgroundColor: `${category.color}` }}
+    >
       <div className="popular-categories-list-item-icon">
         <img src={category.icon} alt="" />
       </div>

@@ -7,7 +7,9 @@ const ActivityItem = ({ activity }) => {
         <img src={activity.icon} alt="" />
       </div>
       <div>
-        <p className="description"><span>{activity.user}</span> {activity.text}</p>
+        <p className="description">
+          <span>{activity.user}</span> {activity.text}
+        </p>
         <p className="days-ago">{activity.day} days ago</p>
       </div>
     </div>

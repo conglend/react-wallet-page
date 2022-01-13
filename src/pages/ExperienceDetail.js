@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
@@ -8,22 +8,22 @@ import { popularCategories, activities } from "../constants";
 
 import shareIcon from "../assets/images/svg/share.svg";
 import openIcon from "../assets/images/svg/open.svg";
-import peopleIcon from "../assets/images/svg/people.svg";
 import globeIcon from "../assets/images/svg/globe.svg";
 import arrowDownIcon from "../assets/images/svg/arrow_down.svg";
+import peopleIcon from "../assets/images/svg/people.svg";
 
 import { experiences } from "../constants";
 
 const tabs = [
-  { id: 1, label: 'Details' },
-  { id: 2, label: 'Activities' },
+  { id: 1, label: "Details" },
+  { id: 2, label: "Activities" },
 ];
 
 const ExperienceDetailPage = () => {
-  let { id } = useParams()
+  let { id } = useParams();
 
-  const experience = experiences.find(e => e.id == id);
-  const category = popularCategories.find(c => c.id == experience.categoryId);
+  const experience = experiences.find((e) => e.id == id);
+  const category = popularCategories.find((c) => c.id == experience.categoryId);
 
   const [activeTab, setActiveTab] = useState(1);
   const [visibleOverView, setVisibleOverView] = useState(true);
@@ -35,7 +35,7 @@ const ExperienceDetailPage = () => {
         <div className="top-content">
           <div className="d-flex page-header">
             <div className="main-icon">
-              <img src={experience?.icon} alt="" />            
+              <img src={experience?.icon} alt="" />
             </div>
             <div className="d-flex share-link cursor">
               <img src={shareIcon} alt="" className="share-icon" />
@@ -60,7 +60,13 @@ const ExperienceDetailPage = () => {
         </div>
         <div className="custom-tabs">
           {tabs.map((tab) => (
-            <div className={`tab-item cursor ${activeTab === tab.id ? 'active' : ''}`} onClickCapture={() => setActiveTab(tab.id)} key={tab.id}>
+            <div
+              className={`tab-item cursor ${
+                activeTab === tab.id ? "active" : ""
+              }`}
+              onClickCapture={() => setActiveTab(tab.id)}
+              key={tab.id}
+            >
               {tab.label}
             </div>
           ))}
@@ -68,16 +74,27 @@ const ExperienceDetailPage = () => {
         <div className="tab-content">
           {activeTab === 1 && (
             <div className="overview-section">
-              <div className="d-flex detail-header cursor" onClickCapture={() => setVisibleOverView(!visibleOverView)}>
+              <div
+                className="d-flex detail-header cursor"
+                onClickCapture={() => setVisibleOverView(!visibleOverView)}
+              >
                 <h6>Overview</h6>
-                <img src={arrowDownIcon} alt="" className={!visibleOverView ? 'detail-hidden' : 'detail-visible'} />
+                <img
+                  src={arrowDownIcon}
+                  alt=""
+                  className={
+                    !visibleOverView ? "detail-hidden" : "detail-visible"
+                  }
+                />
               </div>
               {visibleOverView && (
                 <>
-                  <div className="description">
-                    {experience?.overview}
-                  </div>
-                  <a href="https://docusignn.io" target="_blank" rel="noreferrer">
+                  <div className="description">{experience?.overview}</div>
+                  <a
+                    href="https://docusignn.io"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <img src={globeIcon} alt="" />
                     <span>https://docusignn.io</span>
                   </a>
@@ -88,15 +105,17 @@ const ExperienceDetailPage = () => {
 
           {activeTab === 2 && (
             <div className="activity-list">
-              <div className="activity-found">{activities.length} activity found</div>
+              <div className="activity-found">
+                {activities.length} activity found
+              </div>
               {activities.map((activity) => (
-                <ActivityItem key={activity.id} activity={activity} />                
+                <ActivityItem key={activity.id} activity={activity} />
               ))}
             </div>
           )}
         </div>
       </div>
-    </Layout>    
+    </Layout>
   );
 };
 

@@ -1,8 +1,8 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import ExperiencePage from './pages/Experience';
-import ExperienceDetailPage from './pages/ExperienceDetail';
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import ExperiencePage from "./pages/Experience";
+import ExperienceDetailPage from "./pages/ExperienceDetail";
 
-import './assets/styles/Experience.scss';
+import "./assets/styles/Experience.scss";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <Route path="/experience/:id" element={<ExperienceDetailPage />} />
         </Routes>
       </div>
-    </Router>    
+    </Router>
   );
 }
 
