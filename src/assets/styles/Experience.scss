@@ -127,6 +127,10 @@
   &.no-margin {
     margin: 0;
   }
+
+  &.search-count {
+    font-size: 14px;
+  }
 }
 
 .section-header {
@@ -170,6 +174,10 @@
       align-items: flex-end;
       justify-content: space-between;
       margin-bottom: 10px;
+
+      .main-icon {
+        width: 69px;
+      }
 
       .share-link {
         img {

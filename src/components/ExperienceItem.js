@@ -6,7 +6,7 @@ const ExperienceItem = ({ experience }) => {
   const navigate = useNavigate();
 
   const goToDetailPage = (id) => {
-    navigate(`/${id}`);
+    navigate(`/experience/${id}`);
   }
 
   return (
@@ -18,7 +18,7 @@ const ExperienceItem = ({ experience }) => {
         <div>
           <h5 className="experiences-item-title">{experience.title}</h5>
           <p className="experiences-item-description">{experience.description}</p>
-          <p className="experiences-item-members">{experience.memberNumbers}</p>
+          <p className="experiences-item-members">{experience.usersCountStr}</p>
         </div>
       </div>
       <img src={arrowIcon} alt="" />

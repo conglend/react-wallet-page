@@ -16,7 +16,7 @@ const Topbar = () => {
   return (
     <div className="topbar d-flex">
       <div className="d-flex">
-        <img src={backIcon} alt="" className="cursor" onClick={() => goToBackPage()} />
+        <img src={backIcon} alt="" className="cursor" onClick={goToBackPage} />
         <img src={homeIcon} alt="" className="cursor" />
       </div>
       <div className="d-flex">

@@ -1,43 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import ExperienceItem from "../components/ExperienceItem";
 import CategoryItem from "../components/CategoryItem";
-import CheckboxItem from "../components/CheckboxItem";
+import FiltersModal from "../components/FiltersModal";
 
 import { popularCategories, experiences } from "../constants";
 
 import searchIcon from "../assets/images/svg/search.svg";
 import filterIcon from "../assets/images/svg/filter.svg";
-
 import seeArrowIcon from "../assets/images/svg/arrow_right_2.svg";
 
-import closeIcon from "../assets/images/svg/close.svg";
-
 const ExperiencePage = () => {
+
   const [searchKey, setSearchKey] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
   const [visibleFilterModal, setVisibleFilterModal] = useState(false);
-  const [selectedCateories, setSelectedCategories] = useState([]);
-  const [checkedAll, setCheckedAll] = useState(false);
 
-  const handleCategorySelect = (catID) => {
-    if (selectedCateories.includes(catID)) {
-      setSelectedCategories(selectedCateories.filter((id) => id !== catID));
-    } else {
-      setSelectedCategories([...selectedCateories, catID]);
-    }
-  };
+  useEffect(() => {
+    setSearchResults(searchKey ? experiences.filter((experience) => {
+        const title = experience.title.toLocaleLowerCase();
+        return title.includes(searchKey.toLocaleLowerCase());
+      }) : experiences);
+  }, [searchKey])
 
-  const handleAllCategories = () => {
-    if(!checkedAll) {
-      setCheckedAll(true);
-      setSelectedCategories(popularCategories.map(item => item.id));
-    } else {
-      setCheckedAll(false);
-      setSelectedCategories([]);
-    }
-  };
   return (
     <Layout>
       <div className="experience-page">
@@ -50,12 +37,12 @@ const ExperiencePage = () => {
         </div>
         <div className="page-content">
           {searchKey !== '' ? (
-            experiences
-            .filter((experience) => experience.title.toLocaleLowerCase()
-            .includes(searchKey.toLocaleLowerCase()))
-            .map((experience) => (
-              <ExperienceItem experience={experience} key={experience.id}/>
-            ))
+            <div className="recent-experiences">
+              <h6 className="section-title search-count">{searchResults.length} experiences found</h6>
+              {searchResults.map((experience) => (
+                <ExperienceItem experience={experience} key={experience.id}/>
+              ))}
+            </div>
           ) : (
             <>
               <div className="recent-experiences">
@@ -88,40 +75,7 @@ const ExperiencePage = () => {
         </div>    
 
         {visibleFilterModal && (
-          <div className="modal-overlay">
-            <div className="category-filter">
-              <div className="modal-header d-flex">
-                <div className="d-flex">
-                  <span>Filter </span>
-                  <div className="filter-count">{selectedCateories.length}</div>
-                </div>
-                <img src={closeIcon} alt="" onClickCapture={() => setVisibleFilterModal(false)} className="cursor" />
-              </div>
-              <div className="checkbox-list">
-                <div className="checkbox-item d-flex">
-                  <div className="d-flex">
-                    <input 
-                      className="custom-checkbox" 
-                      id="category-select-all"
-                      type="checkbox" 
-                      checked={checkedAll}
-                      onChange={() => handleAllCategories()}
-                    />
-                    <label id="category-select-all" onClickCapture={() => handleAllCategories()}></label>
-                  </div>
-                  <span className="all-check">All Experiences</span>
-                </div>
-                {popularCategories.map((category) => ( 
-                  <CheckboxItem
-                    key={category.id}
-                    category={category} 
-                    checked={selectedCateories.includes(category.id)} 
-                    handleCategorySelect={handleCategorySelect}
-                  />
-                ))}              
-              </div>
-            </div>
-          </div>
+          <FiltersModal popularCategories={popularCategories} visibleFilterModal={visibleFilterModal} setVisibleFilterModal={setVisibleFilterModal} />
         )}
       </div>
     </Layout>    

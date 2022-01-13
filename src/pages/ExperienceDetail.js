@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
+import { useParams } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import ActivityItem from "../components/ActivityItem";
 
-import { tabs, activities } from "../constants";
+import { popularCategories, activities } from "../constants";
 
-import recentExpIcon2 from "../assets/images/svg/recent-exp1.svg";
 import shareIcon from "../assets/images/svg/share.svg";
 import openIcon from "../assets/images/svg/open.svg";
 import peopleIcon from "../assets/images/svg/people.svg";
-
 import globeIcon from "../assets/images/svg/globe.svg";
 import arrowDownIcon from "../assets/images/svg/arrow_down.svg";
 
+import { experiences } from "../constants";
+
+const tabs = [
+  { id: 1, label: 'Details' },
+  { id: 2, label: 'Activities' },
+];
 
 const ExperienceDetailPage = () => {
+  let { id } = useParams()
+
+  const experience = experiences.find(e => e.id == id);
+  const category = popularCategories.find(c => c.id == experience.categoryId);
+
   const [activeTab, setActiveTab] = useState(1);
-  const [visibleContent, setVisibleContent] = useState(false);
+  const [visibleOverView, setVisibleOverView] = useState(true);
 
   return (
     <Layout>
@@ -25,7 +35,7 @@ const ExperienceDetailPage = () => {
         <div className="top-content">
           <div className="d-flex page-header">
             <div className="main-icon">
-              <img src={recentExpIcon2} alt="" />            
+              <img src={experience?.icon} alt="" />            
             </div>
             <div className="d-flex share-link cursor">
               <img src={shareIcon} alt="" className="share-icon" />
@@ -33,9 +43,9 @@ const ExperienceDetailPage = () => {
             </div>
           </div>
           <div className="description-section">
-            <h5>Docu sign</h5>
-            <p className="description">sign smart contracts seamlessly</p>
-            <p className="category">Utilities</p>
+            <h5>{experience?.title}</h5>
+            <p className="description">{experience?.description}</p>
+            <p className="category">{category?.text}</p>
           </div>
           <div className="members-count d-flex">
             <button className="cursor open-link">
@@ -44,7 +54,7 @@ const ExperienceDetailPage = () => {
             </button>
             <div className="d-flex mumbers">
               <img src={peopleIcon} alt="" />
-              <p>24,000+ users</p>
+              <p>{experience?.usersCountStr}</p>
             </div>
           </div>
         </div>
@@ -58,14 +68,14 @@ const ExperienceDetailPage = () => {
         <div className="tab-content">
           {activeTab === 1 && (
             <div className="overview-section">
-              <div className="d-flex detail-header cursor" onClickCapture={() => setVisibleContent(!visibleContent)}>
+              <div className="d-flex detail-header cursor" onClickCapture={() => setVisibleOverView(!visibleOverView)}>
                 <h6>Overview</h6>
-                <img src={arrowDownIcon} alt="" className={!visibleContent ? 'detail-hidden' : 'detail-visible'} />
+                <img src={arrowDownIcon} alt="" className={!visibleOverView ? 'detail-hidden' : 'detail-visible'} />
               </div>
-              {visibleContent && (
+              {visibleOverView && (
                 <>
                   <div className="description">
-                    it is easy to electronically sign, manage and distribute all your contracts and documents safely, securely, anywhere, anytime- paperlessly. 
+                    {experience?.overview}
                   </div>
                   <a href="https://docusignn.io" target="_blank" rel="noreferrer">
                     <img src={globeIcon} alt="" />

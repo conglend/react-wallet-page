@@ -16,49 +16,67 @@ const experiences = [
     id: 1,
     title: 'DeFi Swap',
     description: 'Swap your digital assets',
-    memberNumbers: '+200 users',
+    usersCountStr: '+200 users',
+    viewCount: 204,
     icon: recentExpIcon1,
-    type: 'recent'
+    type: 'recent',
+    categoryId: 6,
+    overview: 'it is easy to electronically sign, manage and distribute all your contracts and documents safely, securely, anywhere, anytime- paperlessly.'
   },
   {
     id: 2,
     title: 'Docu sign',
     description: 'sign smart contracts seamlessly',
-    memberNumbers: '+1K users',
+    usersCountStr: '+1K users',
+    viewCount: 1203,
     icon: recentExpIcon2,
-    type: 'trending'
+    type: 'trending',
+    categoryId: 1,
+    overview: 'it is easy to electronically sign, manage and distribute all your contracts and documents safely, securely, anywhere, anytime- paperlessly.'
   },
   {
     id: 3,
     title: 'Testing Experience1',
     description: 'Swap your digital assets',
-    memberNumbers: '+200 users',
+    usersCountStr: '+300 users',
+    viewCount: 303,
     icon: recentExpIcon1,
-    type: 'trending'
+    type: 'trending',
+    categoryId: 1,
+    overview: 'it is easy to electronically sign, manage and distribute all your contracts and documents safely, securely, anywhere, anytime- paperlessly.'
   },
   {
     id: 4,
     title: 'ABC Tested Experience',
     description: 'sign smart contracts seamlessly',
-    memberNumbers: '+1K users',
+    usersCountStr: '+1K users',
+    viewCount: 1403,
     icon: recentExpIcon2,
-    type: 'recent'
+    type: 'recent',
+    categoryId: 1,
+    overview: 'it is easy to electronically sign, manage and distribute all your contracts and documents safely, securely, anywhere, anytime- paperlessly.'
   },
   {
     id: 5,
     title: 'Super Nice',
     description: 'Swap your digital assets',
-    memberNumbers: '+200 users',
+    usersCountStr: '+200 users',
+    viewCount: 245,
     icon: recentExpIcon1,
-    type: 'recent'
+    type: 'recent',
+    categoryId: 2,
+    overview: 'it is easy to electronically sign, manage and distribute all your contracts and documents safely, securely, anywhere, anytime- paperlessly.'
   },
   {
     id: 6,
     title: 'BBC Audio',
     description: 'sign smart contracts seamlessly',
-    memberNumbers: '+1K users',
+    usersCountStr: '+1K users',
+    viewCount: 1823,
     icon: recentExpIcon2,
-    type: 'recent'
+    type: 'recent',
+    categoryId: 3,
+    overview: 'it is easy to electronically sign, manage and distribute all your contracts and documents safely, securely, anywhere, anytime- paperlessly.'
   },
 ];
 
@@ -71,14 +89,9 @@ const popularCategories = [
   { id: 6, color: '#F0EBFF', icon: cateIcon6, text: 'Utilities' },
 ];
 
-const tabs = [
-  { id: 1, label: 'Details' },
-  { id: 2, label: 'Activities' },
-];
-
 const activities = [
   { id: 1, icon: activityIcon1, user: 'johndoe.near', text: 'signed the contract successfully', day: 2, },
   { id: 2, icon: activityIcon2, user: 'CryptoKing.near', text: 'requested to sign the contract', day: 3, },   
 ];
 
-export { experiences,  popularCategories, tabs, activities }
+export { experiences,  popularCategories, activities }
