@@ -7,7 +7,7 @@
 - Run `npm run build` to build the app for production to the `build` folder
 ## Constants
 
-The constants are defiend in src/constants/index.js
+The mock data ( constants ) are defined in `src/constants/index.js`
 
 We use `experiences`, `popularCategories`, `activities` 
 
