@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import arrowIcon from "../assets/images/svg/arrow_right.svg";
 
 const CategoryItem = ({ category }) => {
@@ -10,7 +9,7 @@ const CategoryItem = ({ category }) => {
       </div>
       <div className="d-flex">
         <span>{category.text}</span>
-        <Link to="/detail"><img src={arrowIcon} alt="" /></Link>
+        <img src={arrowIcon} alt="" />
       </div>
     </div>
   );
