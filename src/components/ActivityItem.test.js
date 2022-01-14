@@ -17,5 +17,13 @@ describe("Experience Detail > Activity Item", () => {
     expect(getByTestId("activity-icon")).toBeInTheDocument()
   })
 
+  it("Should render activity description on the activity item", () => {
+    const { getByTestId } = render(<ActivityItem {...props} />)
+    expect(getByTestId("activity-description")).toBeInTheDocument()
+  })
 
+  it("Should render activity date on the activity item", () => {
+    const { getByTestId } = render(<ActivityItem {...props} />)
+    expect(getByTestId("activity-date")).toBeInTheDocument()
+  })
 })
