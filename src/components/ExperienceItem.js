@@ -12,6 +12,7 @@ const ExperienceItem = ({ experience }) => {
   return (
     <div
       className="experiences-item d-flex cursor"
+      data-testid="experience-item"
       onClick={() => goToDetailPage(experience.id)}
     >
       <div className="d-flex">

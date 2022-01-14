@@ -37,6 +37,7 @@ const ExperiencePage = () => {
               type="text"
               placeholder="Search experiences"
               value={searchKey}
+              data-testid="search-input"
               onChange={(e) => setSearchKey(e.target.value)}
             />
             <img src={searchIcon} alt="" />
